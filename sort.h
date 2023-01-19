@@ -38,7 +38,7 @@ void selection_sort(int *array, size_t size);
 void quick_sort(int *array, size_t size);
 
 void merge_sort(int *array, size_t size);
-void merge (int *A, int *B, int left, int mid, int right);
+void merge(int *A, int *B, int left, int mid, int right);
 void split(int *A, int *B, int left, int right);
 void print_subarray(int *arr, int start, int end);
 
