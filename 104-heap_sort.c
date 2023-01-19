@@ -1,3 +1,4 @@
+#include "merge_helpers.c"
 #include "sort.h"
 
 /**
@@ -9,46 +10,45 @@
  */
 void heap_sort(int *array, size_t size)
 {
-	int i = size / 2 - 1;
-	int j = size - 1;
+	int i, len = (int)size;
 
-	for (; i >= 0; i--)
+	for (i = size / 2 - 1; i >= 0; i--)
+		heapify(array, i, len, size);
+
+	for (i = len - 1; i >= 0; i--)
 	{
-		heapify(array, size, i);
-	}
-	for (; j >= 0; j--)
-	{
-		swap(&array[0], &array[j]);
-		heapify(array, j, 0);
+		swap(&array[0], &array[i]);
+		if (i != 0)
+			print_array(array, size);
+		heapify(array, 0, i, size);
 	}
 }
 
 /**
  * heapify - Builds a binary heap
- * @array: Array to turn into a binary heap
- * @size: Size of array to turn into a heap
- * @i: index of array element
  *
- * Return: Void
+ * @array: Array to turn into a binary heap
+ * @i: current index
+ * @len: length of array (as an int)
+ * @size: Size of array to turn into a heap
  */
-void heapify(int *array, size_t size, int i)
+void heapify(int *array, int i, int len, size_t size)
 {
 	int largest = i;
-	int left = 2 * i + 1;
-	int right = 2 * i + 2;
-	int N = (int)(size);
+	int left = iLeftChild(i);
+	int right = iRightChild(i);
 
-	if (left < N && array[left] > array[largest])
+	if (left < len && array[left] > array[largest])
 		largest = left;
-
-	if (right < N && array[right] > array[largest])
+	if (right < len && array[right] > array[largest])
 		largest = right;
-
 	if (largest != i)
 	{
 		swap(&array[i], &array[largest]);
-		heapify(array, size, largest);
+		print_array(array, size);
+		heapify(array, largest, len, size);
 	}
+
 }
 
 /**

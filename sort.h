@@ -30,7 +30,8 @@ void partition(int *array, int low, int high, size_t size);
 void move_to_head(listint_t *head, listint_t *nodeToMove);
 
 void array_swap(int *array, int a, int b);
-void list_swap(listint_t **list, listint_t *curr);
+// void list_swap(listint_t **list, listint_t *curr);
+void list_swap(listint_t **list);
 
 void bubble_sort(int *array, size_t size);
 void insertion_sort_list(listint_t **list);
@@ -38,13 +39,15 @@ void selection_sort(int *array, size_t size);
 void quick_sort(int *array, size_t size);
 
 void merge_sort(int *array, size_t size);
-void print_my_array(int *array, int start, int end);
-void copy_array(int *array, int start_index, int end_index, int *temp_array);
-void recur_split(int *temp_array, int start, int end, int *array);
-void time_to_merge(int *array, int start, int mid, int end, int *temp_array);
+void merge (int *A, int *B, int left, int mid, int right);
+void split(int *A, int *B, int left, int right);
+void print_subarray(int *arr, int start, int end);
 
-void heap_sort(int  *array, size_t size);
-void heapify(int *array, size_t size, int i);
+void heap_sort(int *array, size_t size);
+void heapify(int *array, int i, int len, size_t size);
 void swap(int *a, int *b);
+int iRightChild(int i);
+int iLeftChild(int i);
+int iParent(int i);
 
 #endif
