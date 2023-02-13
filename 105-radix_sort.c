@@ -9,9 +9,13 @@
  */
 void radix_sort(int *array, size_t size)
 {
-	int max = max_val(array, size);
+	int max;
 	int place;
 
+	if (size <= 1)
+		return;
+
+	max = max_val(array, size);
 	for (place = 1; max / place > 0; place *= 10)
 	{
 		count_sort(array, size, place);
@@ -32,7 +36,7 @@ void radix_sort(int *array, size_t size)
  */
 void count_sort(int *in_arr, int in_size, int place)
 {
-	int *result = malloc(sizeof(int) * (in_size + 1));
+	int *result = malloc(sizeof(int) * (in_size));
 	int *count;
 	int max = (in_arr[0] / place) % 10;
 	int i;
@@ -42,7 +46,7 @@ void count_sort(int *in_arr, int in_size, int place)
 		if (((in_arr[i] / place) % 10) > max)
 			max = in_arr[i];
 	}
-	count = malloc(sizeof(int) * (max + 1));
+	count = malloc(sizeof(int) * (max));
 
 	for (i = 0; i < max; i++)
 		count[i] = 0;
