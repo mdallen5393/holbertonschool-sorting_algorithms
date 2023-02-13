@@ -49,4 +49,8 @@ int iRightChild(int i);
 int iLeftChild(int i);
 int iParent(int i);
 
+int max_val(int *arr, int size);
+void count_sort(int *in_arr, int in_size, int place);
+void radix_sort(int *array, size_t size);
+
 #endif
