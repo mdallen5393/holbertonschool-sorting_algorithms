@@ -40,8 +40,6 @@ void count_sort(int *in_arr, int in_size, int place)
 	int count[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 	int i;
 
-
-	/* count num elems in in_arr with that place value */
 	for (i = 0; i < in_size; i++)
 		count[(in_arr[i] / place) % 10]++;
 
